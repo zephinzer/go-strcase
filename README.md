@@ -12,6 +12,11 @@ A string case converter for use in Golang applications.
     - [`ToLowerSnake`](#tolowersnake)
     - [`ToUpperKebab`](#toupperkebab)
     - [`ToUpperSnake`](#touppersnake)
+  - [Constraints/design decisions](#constraintsdesign-decisions)
+    - [Character delimiters](#character-delimiters)
+    - [Casing delimiters](#casing-delimiters)
+    - [Number delimiters](#number-delimiters)
+    - [Additional trivia](#additional-trivia)
 - [Code design (how it works)](#code-design-how-it-works)
   - [Requirements](#requirements)
   - [Tokenization](#tokenization)
@@ -33,11 +38,21 @@ import "github.com/zephinzer/go-strcase"
 
 Use this if you want your string to `lookLikeThisFormat`
 
+```go
+fmt.Printf("camel case: %s", strcase.ToCamel("hello world"))
+// output: helloWorld
+```
+
 > Useful for: **C-like sematics, JSON, YAML**
 
 ### `ToCapital`
 
 Use this if you want your string to `LookLikeThis`
+
+```go
+fmt.Printf("capital case: %s", strcase.ToCamel("hello world"))
+// output: HelloWorld
+```
 
 > Useful for: **C-like sematics**
 
@@ -45,11 +60,21 @@ Use this if you want your string to `LookLikeThis`
 
 Use this if you want your string to `look-like-this`
 
+```go
+fmt.Printf("lower kebab case: %s", strcase.ToCamel("hello world"))
+// output: hello-world
+```
+
 > Useful for: **JSON, YAML**
 
 ### `ToLowerSnake`
 
 Use this if you want your string to `look_like_this`
+
+```go
+fmt.Printf("lower snake case: %s", strcase.ToCamel("hello world"))
+// output: hello_world
+```
 
 > Useful for: **Python, Perl, Shell**, JSON, YAML
 
@@ -57,13 +82,42 @@ Use this if you want your string to `look_like_this`
 
 Use this if you want your string to `LOOK-LIKE-THIS`
 
+```go
+fmt.Printf("upper kebab case: %s", strcase.ToCamel("hello world"))
+// output: HELLO-WORLD
+```
+
 > Useful for: **?**
 
 ### `ToUpperSnake`
 
 Use this if you want your string to `LOOK_LIKE_THIS`
 
+```go
+fmt.Printf("upper snake case: %s", strcase.ToCamel("hello world"))
+// output: HELLO_WORLD
+```
+
 > Useful for: **Shell**, JSON, YAML
+
+## Constraints/design decisions
+
+### Character delimiters
+
+- Only dashes, underscores, spaces are considered as character delimtiers (eg. `a-pizza`, `a_pizza`, and `a pizza` are seens as `a` and `pizza`)
+- Character delimitations take precedence over the other delimiters (eg. `i want 1 Pizza` is `[i, want, 1, Pizza]`, but `iWant1Pizza` is `[i, want1, pizza]`)
+
+### Casing delimiters
+
+- An upper-cased character is considered a delimiter only when the character after that is a lower-cased character (eg. `APizza` is seen as `A` and `Pizza`, but `sendAPIRequest` is seen as `[send, api, request]`)
+
+### Number delimiters
+
+- The end of any series of numbers is considered a delimiter. This decision was made since variable names usually cannot begin with a number (eg. `1pizza` is `[1, pizza]`, but `pizza1` is `[pizza1]`)
+
+### Additional trivia
+
+- After writing the above, the world pizza doesn't hold any more meaning in my mind. Send help.
 
 # Code design (how it works)
 

@@ -10,7 +10,6 @@ type strcaseTest struct {
 	suite.Suite
 	basicTestCases         []string
 	basicExtendedTestCases []string
-	edgeCases              []string
 	numbersTestCases       []string
 }
 

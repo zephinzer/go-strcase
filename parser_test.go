@@ -104,6 +104,19 @@ func (s parseTest) Test_parse_extended_edge() {
 	}
 }
 
+func (s parseTest) Test_parse_extensions() {
+	expected := []string{"send", "api", "request"}
+	testCases := []string{
+		"send API request",
+		"send-API-Request",
+		"send_API_Request",
+		"sendAPIRequest",
+	}
+	for _, testCase := range testCases {
+		s.EqualValues(expected, parse(testCase))
+	}
+}
+
 func (s parseTest) Test_isDelimiter() {
 	s.False(isDelimiter(typeLower, typeLower, typeInvalid),
 		"should see somethinglikethis as one word")
