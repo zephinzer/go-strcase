@@ -12,6 +12,7 @@ A string case converter for use in Golang applications.
   - [Methods](#methods)
     - [`ToCamel`](#tocamel)
     - [`ToCapital`](#tocapital)
+    - [`ToFlat`](#toflat)
     - [`ToLowerKebab`](#tolowerkebab)
     - [`ToLowerSnake`](#tolowersnake)
     - [`ToUpperKebab`](#toupperkebab)
@@ -59,7 +60,22 @@ fmt.Printf("capital case: %s", strcase.ToCamel("hello world"))
 // output: HelloWorld
 ```
 
+Aliases: `ToCapitalCamel`, `ToPascal`
+
 > Useful for: **C-like sematics**
+
+### `ToFlat`
+
+Use this if you want your string to `looklikethis`
+
+```go
+fmt.Printf("flat case: %s", strcase.ToFlat("helloGreatBigWorld"))
+// output: hellogreatbigworld
+```
+
+Aliases: `ToLazy`
+
+> Useful for: **Java/Gopackage names**
 
 ### `ToLowerKebab`
 
@@ -69,6 +85,8 @@ Use this if you want your string to `look-like-this`
 fmt.Printf("lower kebab case: %s", strcase.ToCamel("hello world"))
 // output: hello-world
 ```
+
+Aliases: `ToCaterpillar`, `ToCSS`, `ToDash`, `ToHyphen`, `ToLazy`, `ToLisp`
 
 > Useful for: **JSON, YAML**
 
@@ -91,6 +109,8 @@ Use this if you want your string to `LOOK-LIKE-THIS`
 fmt.Printf("upper kebab case: %s", strcase.ToCamel("hello world"))
 // output: HELLO-WORLD
 ```
+
+Aliases: `ToMacro`
 
 > Useful for: **?**
 
