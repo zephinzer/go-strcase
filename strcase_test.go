@@ -81,6 +81,27 @@ func (s strcaseTest) TestToCapital_numbers() {
 	}
 }
 
+func (s strcaseTest) TestToFlat_basic() {
+	expected := "helloworld"
+	for _, testCase := range s.basicTestCases {
+		s.EqualValues(expected, ToFlat(testCase))
+	}
+}
+
+func (s strcaseTest) TestToFlat_basicExtended() {
+	expected := "helloaworld"
+	for _, testCase := range s.basicExtendedTestCases {
+		s.EqualValues(expected, ToFlat(testCase))
+	}
+}
+
+func (s strcaseTest) TestToFlat_numbers() {
+	expected := "catch22statement"
+	for _, testCase := range s.numbersTestCases {
+		s.EqualValues(expected, ToFlat(testCase))
+	}
+}
+
 func (s strcaseTest) TestToLowerKebab_basic() {
 	expected := "hello-world"
 	for _, testCase := range s.basicTestCases {
