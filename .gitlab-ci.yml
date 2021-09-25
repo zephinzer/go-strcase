@@ -39,7 +39,8 @@ security:
   stage: test
   dependencies: [deps]
   before_script:
-    - apk add g++
-    - go get -u github.com/securego/gosec/v2/cmd/gosec
+    - apk add curl
+    - curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s -- -b $GOPATH/bin latest
   script:
-    - .go/bin/gosec ./...
+    - go mod vendor
+    - .go/bin/gosec .
