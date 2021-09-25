@@ -1,0 +1,51 @@
+stages:
+  - deps
+  - test
+  - release
+
+image: golang:1.17.1-alpine3.14
+
+deps:
+  stage: deps
+  only:
+    changes:
+      - ./go.*
+  cache:
+    key: '$CI_COMMIT_REF_SLUG'
+    paths:
+      - ./vendor
+      - ./.go
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - ./vendor
+  script:
+    - go mod vendor
+
+unit:
+  stage: test
+  only:
+    changes:
+      - ./*.go
+      - ./go.*
+  before_script:
+    - apk add g++
+    - go get github.com/boumenot/gocover-cobertura
+  artifacts:
+    reports:
+      cobertura: coverage.xml
+  script:
+    - go test . -cover
+    - .go/bin/gocover-cobertura < ./coverage.out > ./coverage.xml
+
+security:
+  stage: test
+  only:
+    changes:
+      - ./*.go
+      - ./go.*
+  before_script:
+    - apk add g++
+    - go get -u github.com/securego/gosec/v2/cmd/gosec
+  script:
+    - gosec .
