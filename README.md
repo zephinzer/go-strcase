@@ -1,8 +1,8 @@
 # go-strcase
 
 ![gitlab tag (latest by date)](https://img.shields.io/gitlab/v/tag/zephinzer/go-strcase?sort=date)
-[![pipeline status](https://gitlab.com/zephinzer/go-strcase/badges/master/pipeline.svg)](https://gitlab.com/zephinzer/go-strcase/-/commits/master)
-[![coverage report](https://gitlab.com/zephinzer/go-strcase/badges/master/coverage.svg)](https://gitlab.com/zephinzer/go-strcase/-/commits/master)
+![pipeline status](https://gitlab.com/zephinzer/go-strcase/badges/master/pipeline.svg)]
+![coverage report](https://gitlab.com/zephinzer/go-strcase/badges/master/coverage.svg)]
 
 A string case converter for use in Golang applications.
 
