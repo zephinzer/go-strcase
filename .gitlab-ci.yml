@@ -30,10 +30,10 @@ unit:
       cobertura: reports/coverage.xml
   before_script:
     - apk add g++
-    - go get github.com/boumenot/gocover-cobertura
+    - go get -mod=mod github.com/boumenot/gocover-cobertura
     - mkdir -p ./reports
   script:
-    - go test -v -mod=mod -covermode=atomic -coverpkg=. -coverprofile=./reports/coverage.out .
+    - go test -v -mod=readonly -covermode=atomic -coverpkg=. -coverprofile=./reports/coverage.out .
     - .go/bin/gocover-cobertura < ./reports/coverage.out > ./reports/coverage.xml
 
 security:
