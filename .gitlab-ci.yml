@@ -30,17 +30,20 @@ unit:
     - go get github.com/boumenot/gocover-cobertura
   artifacts:
     reports:
-      cobertura: coverage.xml
+      cobertura: reports/coverage.xml
   script:
-    - go test -v -mod=mod -covermode=atomic -coverpkg=. -coverprofile=./coverage.out .
-    - .go/bin/gocover-cobertura < ./coverage.out > ./coverage.xml
+    - go test -v -mod=mod -covermode=atomic -coverpkg=. -coverprofile=./reports/coverage.out .
+    - .go/bin/gocover-cobertura < ./reports/coverage.out > ./reports/coverage.xml
 
 security:
   stage: test
   dependencies: [deps]
+  artifacts:
+    reports:
+      sast: reports/sast.json
   before_script:
     - apk add curl
     - curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s -- -b $GOPATH/bin latest
   script:
     - go mod vendor
-    - .go/bin/gosec .
+    - .go/bin/gosec -fmt json -out reports/sast.json .
