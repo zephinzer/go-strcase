@@ -41,6 +41,7 @@ unit:
 
 security:
   stage: test
+  dependencies: [deps]
   only:
     changes:
       - ./*.go
