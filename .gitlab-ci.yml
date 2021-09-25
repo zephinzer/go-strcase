@@ -4,6 +4,8 @@ stages:
   - release
 
 image: golang:1.17.1-alpine3.14
+variables:
+  GOPATH: $CI_PROJECT_DIR/.go
 
 deps:
   stage: deps
