@@ -25,12 +25,13 @@ deps:
 unit:
   stage: test
   dependencies: [deps]
-  before_script:
-    - apk add g++
-    - go get github.com/boumenot/gocover-cobertura
   artifacts:
     reports:
       cobertura: reports/coverage.xml
+  before_script:
+    - apk add g++
+    - go get github.com/boumenot/gocover-cobertura
+    - mkdir -p ./reports
   script:
     - go test -v -mod=mod -covermode=atomic -coverpkg=. -coverprofile=./reports/coverage.out .
     - .go/bin/gocover-cobertura < ./reports/coverage.out > ./reports/coverage.xml
@@ -44,6 +45,7 @@ security:
   before_script:
     - apk add curl
     - curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s -- -b $GOPATH/bin latest
+    - mkdir -p ./reports
   script:
     - go mod vendor
     - .go/bin/gosec -fmt json -out reports/sast.json .
