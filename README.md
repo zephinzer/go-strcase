@@ -26,6 +26,7 @@ A string case converter for use in Golang applications.
   - [Tokenization](#tokenization)
   - [Reconciliation](#reconciliation)
 - [Contributing](#contributing)
+  - [Changelog](#changelog)
 - [License](#license)
 
 # Usage
@@ -155,6 +156,15 @@ After the above tokenization, the transformations are added:
 # Contributing
 
 The working repository is at Gitlab at [https://gitlab.com/zephinzer/go-strcase](https://gitlab.com/zephinzer/go-strcase), if you are seeing this on Github, it's just for SEO since y'know all the cool new kids are on Github 😂
+
+## Changelog
+
+A rough changelog when the contributors can remember to add it is here:
+
+| Version  | Description                                                                                                                                 |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `v1.0.1` | Added code comments for just-in-time documentation, added alises for a few of the case names                                                |
+| `v1.0.0` | Initial release with support for `camelCase`, `CapitalCase`, `lower-kebab-case`, `lower_snake_case`, `UPPER-KEBAB-CASE`, `UPPER_SNAKE_CASE` |
 
 # License
 

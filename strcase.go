@@ -99,7 +99,7 @@ func ToUpperKebab(input string) string {
 
 // ToUpperSnake converts the input string `input` into `UPPER_SNAKE_CASE`.
 //
-// Useful for: constants in JavaScript/TypeScript/Python
+// Useful for: constants in JavaScript/TypeScript/Python, Shell variables
 func ToUpperSnake(input string) string {
 	tokens := parse(input)
 	for i := 0; i < len(tokens); i++ {
