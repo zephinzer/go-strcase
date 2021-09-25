@@ -25,10 +25,6 @@ deps:
 unit:
   stage: test
   dependencies: [deps]
-  only:
-    changes:
-      - ./*.go
-      - ./go.*
   before_script:
     - apk add g++
     - go get github.com/boumenot/gocover-cobertura
@@ -42,10 +38,6 @@ unit:
 security:
   stage: test
   dependencies: [deps]
-  only:
-    changes:
-      - ./*.go
-      - ./go.*
   before_script:
     - apk add g++
     - go get -u github.com/securego/gosec/v2/cmd/gosec
