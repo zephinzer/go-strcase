@@ -42,4 +42,4 @@ security:
     - apk add g++
     - go get -u github.com/securego/gosec/v2/cmd/gosec
   script:
-    - .go/bin/gosec -mod=mod .
+    - .go/bin/gosec ./...
