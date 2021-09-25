@@ -7,9 +7,6 @@ image: golang:1.17.1-alpine3.14
 
 deps:
   stage: deps
-  only:
-    changes:
-      - ./go.*
   cache:
     key: '$CI_COMMIT_REF_SLUG'
     paths:
