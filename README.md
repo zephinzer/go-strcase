@@ -1,6 +1,6 @@
 # go-strcase
 
-![gitlab tag (latest by date)](https://img.shields.io/gitlab/v/tag/zephinzer/go-strcase?sort=date)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/zephinzer/go-strcase)
 [![pipeline status](https://gitlab.com/zephinzer/go-strcase/badges/master/pipeline.svg)](https://gitlab.com/zephinzer/go-strcase/-/commits/master)
 [![coverage report](https://gitlab.com/zephinzer/go-strcase/badges/master/coverage.svg)](https://gitlab.com/zephinzer/go-strcase/-/commits/master)
 
